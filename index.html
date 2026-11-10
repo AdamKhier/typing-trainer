@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Trainer</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Typing Trainer</h1>
+      <div class="mode-tabs">
+        <button class="tab active" data-mode="learn">Learn</button>
+        <button class="tab" data-mode="test">Test</button>
+      </div>
+    </header>
+
+    <main class="mode-learn" id="learn-mode">
+      <section class="lesson-info">
+        <div class="lesson-counter">Lesson 1 of 7</div>
+        <div class="lesson-progress-bar">
+          <div class="lesson-progress" style="width: 14.3%"></div>
+        </div>
+      </section>
+      <section class="lesson-area">
+        <div class="lesson-preview" id="lesson-preview"></div>
+        <div class="caret" id="caret">|</div>
+        <p class="lesson-text" id="lesson-text"></p>
+      </section>
+      <section class="lesson-keyboard" id="lesson-keyboard"></section>
+    </main>
+
+    <main class="mode-test" id="test-mode" style="display:none;">
+      <div class="test-controls">
+        <button class="test-btn" data-duration="15">15s</button>
+        <button class="test-btn active" data-duration="30">30s</button>
+        <button class="test-btn" data-duration="60">60s</button>
+      </div>
+      <div class="test-stats">
+        <div class="wpm" id="wpm">0 WPM</div>
+        <div class="accuracy" id="accuracy">100% Acc</div>
+      </div>
+      <div class="caret" id="test-caret">|</div>
+      <p class="test-text" id="test-text"></p>
+      <section class="test-keyboard" id="test-keyboard"></section>
+    </main>
+
+    <div class="results-overlay" id="results-overlay" style="display:none;">
+      <div class="results-content">
+        <div class="results-wpm" id="results-wpm">0 WPM</div>
+        <div class="results-accuracy" id="results-accuracy">0% Acc</div>
+        <div class="results-accuracy-detail" id="results-accuracy-detail">0 / 0</div>
+        <button class="restart-btn">Restart</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="finger-legend">
+    <div class="legend-item f-pinky">Pinkies</div>
+    <div class="legend-item f-ring">Ring</div>
+    <div class="legend-item f-middle">Middle</div>
+    <div class="legend-item f-index">Index</div>
+    <div class="legend-item f-space">Space</div>
+    <div class="legend-item f-thumb">Thumbs</div>
+  </div>
+  <script src="js/lessons.js"></script>
+  <script src="js/keyboard.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

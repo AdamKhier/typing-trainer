@@ -1,0 +1,84 @@
+/* -- Reset & Base -- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #0d0d0d; color: #646669; min-height: 100vh; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: inherit; font-size: 1rem; }
+
+/* -- App Shell -- */
+.app { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
+header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+h1 { font-size: 1.25rem; letter-spacing: 0.15em; text-transform: uppercase; }
+.mode-tabs { display: flex; gap: 0.5rem; }
+.tab { padding: 0.5rem 1rem; border: none; background: transparent; color: #646669; border-bottom: 2px solid transparent; font-weight: 500; transition: color 0.2s; }
+.tab.active { color: #e2b714; border-bottom-color: #e2b714; }
+.tab:hover:not(.active) { color: #8b8d90; }
+
+/* -- Mode: Learn -- */
+.mode-learn { min-height: 400px; position: relative; }
+.lesson-info { margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+.lesson-counter { font-size: 0.85rem; color: #8b8d90; }
+.lesson-progress-bar { flex: 1; height: 6px; background: #323437; border-radius: 3px; overflow: hidden; }
+.lesson-progress-bar .lesson-progress { height: 100%; background: #e2b714; width: 14.3%; transition: width 0.3s; }
+
+.lesson-area { position: relative; min-height: 200px; display: flex; flex-direction: column; justify-content: center; padding: 0 2rem; }
+.lesson-preview { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: #1e1e1e; border-radius: 4px; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.lesson-preview.visible { opacity: 0.3; }
+.caret { font-size: 3rem; color: #e2b714; margin: 0 0.2rem; }
+.lesson-text { font-size: 1.25rem; line-height: 1.6; }
+.lesson-text span { position: relative; }
+.lesson-text .current { color: #e2b714; }
+.lesson-text .error { color: #ca4754; text-shadow: none; }
+.lesson-text .correct { color: #a3cf7e; }
+
+.lesson-keyboard { margin-top: 1.5rem; display: grid; grid-template-columns: repeat(10, 1fr); gap: 2px; }
+.lesson-keyboard .key { aspect-ratio: 1; background: #323437; border: 1px solid #323437; border-radius: 4px; color: #646669; font-size: 0.7rem; font-weight: bold; display: flex; align-items: center; justify-content: center; transition: background 0.15s; }
+.lesson-keyboard .key:hover { background: #3a3c3e; }
+.lesson-keyboard .key.target { background: #e2b714; color: #0d0d0d; }
+.lesson-keyboard .key.correct { background: #a3cf7e; color: #0d0d0d; }
+.lesson-keyboard .key.wrong { background: #ca4754; color: #0d0d0d; }
+
+/* -- Mode: Test -- */
+.mode-test { min-height: 400px; position: relative; }
+.test-controls { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+.test-btn { padding: 0.5rem 1rem; border: 1px solid #323437; background: transparent; color: #646669; font-size: 0.85rem; transition: all 0.2s; }
+.test-btn.active { background: #e2b714; color: #0d0d0d; border-color: #e2b714; }
+.test-btn:hover:not(.active) { background: #3a3c3e; }
+.test-stats { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.85rem; color: #8b8d90; }
+.wpm { text-align: left; }
+.accuracy { text-align: right; }
+
+.test-caret { font-size: 3rem; color: #e2b714; margin: 0 0.2rem; min-height: 3rem; display: flex; align-items: center; }
+.test-text { font-size: 1.25rem; line-height: 1.6; }
+.test-text span { position: relative; }
+.test-text .current { color: #e2b714; }
+.test-text .error { color: #ca4754; text-shadow: none; }
+.test-text .correct { color: #a3cf7e; }
+
+.test-keyboard { margin-top: 1.5rem; display: grid; grid-template-columns: repeat(12, 1fr); gap: 2px; }
+.lesson-keyboard { margin-top: 1.5rem; display: grid; grid-template-columns: repeat(12, 1fr); gap: 2px; }
+.test-keyboard .key { aspect-ratio: 1; background: #323437; border: 1px solid #323437; border-radius: 4px; color: #646669; font-size: 0.7rem; font-weight: bold; display: flex; align-items: center; justify-content: center; transition: background 0.15s; }
+.test-keyboard .key:hover { background: #3a3c3e; }
+.test-keyboard .key.target { background: #e2b714; color: #0d0d0d; }
+.test-keyboard .key.correct { background: #a3cf7e; color: #0d0d0d; }
+.test-keyboard .key.wrong { background: #ca4754; color: #0d0d0d; }
+
+/* -- Results Overlay -- */
+.results-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 100; }
+.results-overlay.hidden { display: none; }
+.results-content { background: #1e1e1e; padding: 2rem 3rem; border-radius: 8px; text-align: center; max-width: 400px; }
+.results-wpm { font-size: 2rem; margin-bottom: 0.5rem; color: #e2b714; }
+.results-accuracy { font-size: 1.25rem; margin-bottom: 1rem; color: #8b8d90; }
+.results-accuracy-detail { font-size: 1rem; color: #646669; margin-bottom: 1.5rem; }
+.restart-btn { padding: 0.75rem 1.5rem; border: none; background: #e2b714; color: #0d0d0d; font-size: 1rem; font-weight: bold; border-radius: 4px; cursor: pointer; transition: transform 0.1s; }
+.restart-btn:active { transform: scale(0.98); }
+
+/* -- Finger Legend (bottom) -- */
+.finger-legend { position: fixed; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.5rem; font-size: 0.65rem; }
+.finger-legend .legend-item { padding: 0.25rem 0; text-align: center; }
+.finger-legend .legend-item.f-pinky   { color: #ff5f57; }
+.finger-legend .legend-item.f-ring    { color: #ff8c42; }
+.finger-legend .legend-item.f-middle  { color: #ffd345; }
+.finger-legend .legend-item.f-index   { color: #a8d5ff; }
+.finger-legend .legend-item.f-space   { color: #fff; background: #555; padding: 0 0.5rem; border-radius: 3px; }
+.finger-legend .legend-item.f-thumb   { color: #777; }
